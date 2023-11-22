@@ -28,9 +28,11 @@
                 if (command == "quit")
                 {
                     Console.WriteLine("Goodbye!");
+                    break;
                 }
+                // Fixme: Lägg till en slutkontroll för att förhindra att programmet körs oändligt
                 else if (command == "load")
-                    // Load dictionary
+                    // Load dictionary // Fixme: Lägg till en säkerhetskontroll för att förhindra att filen öppnas om den inte finns
                     void LoadDictionary(string fileName)
                     {
                         using (StreamReader sr = new StreamReader(fileName))
@@ -88,6 +90,7 @@
                 }
                 else if (command == "delete")
                 {
+                    // Fixme: Lägg till en säkerhetskontroll för att förhindra att ett index utanför listans gränser används
                     if (argument.Length == 3)
                     {
                         int index = -1;
