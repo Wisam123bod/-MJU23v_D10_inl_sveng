@@ -1,4 +1,5 @@
-﻿using static System.Reflection.Metadata.BlobBuilder;
+﻿using System;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace MJU23v_D10_inl_sveng
 {
@@ -33,7 +34,9 @@ namespace MJU23v_D10_inl_sveng
             {
                 Console.Write("> ");
                 string[] argument = Console.ReadLine().Split();
-                string command = argument[0];
+                string command = argument[0]
+
+
                 if (command == "quit")
                 {
                     Console.WriteLine("Goodbye!");
