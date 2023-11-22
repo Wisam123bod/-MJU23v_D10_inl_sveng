@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using static System.Reflection.Metadata.BlobBuilder;
 
-namespace MJU23v_D10_inl_sveng
+namespace MJU23v_D10_inl_sveng //Todo förfina koden
 {
     internal class Program
     {
@@ -20,7 +21,8 @@ namespace MJU23v_D10_inl_sveng
             }
         }
         static void Main(string[] args)
-            // La till en kontroll för att se argument.Lenght är minst 1
+        // TODO: Lägg till en bekräftelse innan användaren avslutar programmet
+        // La till en kontroll för att se argument.Lenght är minst 1
         {
             if (args.Length < 1)
             {
@@ -58,17 +60,19 @@ namespace MJU23v_D10_inl_sveng
         continue;
     }
 
-    LoadDictionary(argument[1]);
-}
+    if (argument.Length == 2)
 {
-    if (!File.Exists(argument[1]))
+    string fileName = argument[1];
+
+    if (!File.Exists(fileName))
     {
-        Console.WriteLine($"The file \"{argument[1]}\" does not exist.");
+        Console.WriteLine($"The file \"{fileName}\" does not exist.");
         continue;
     }
 
-    LoadDictionary(argument[1]);
+LoadDictionary(fileName);
 }
+
 
                 }
                 // Fixade "fix me"-kommentaren i LoadDictionary()-funktionen
@@ -81,25 +85,38 @@ namespace MJU23v_D10_inl_sveng
                     Console.WriteLine($"Filen \"{argument[1]}\" finns inte.");
                 }
 
-                else if (command == "load")
-                    // Load dictionary // Fixme: Lägg till en säkerhetskontroll för att förhindra att filen öppnas om den inte finns
-                    void LoadDictionary(string fileName)
-                    {
-                        using (StreamReader sr = new StreamReader(fileName))
-                        {
-                            dictionary = new List<SweEngGloss>();
-                            string line = sr.ReadLine();
-                            while (line != null)
-                            {
-                                SweEngGloss gloss = new SweEngGloss(line);
-                                dictionary.Add(gloss);
-                                line = sr.ReadLine();
-                            }
-                        }
-                    }
+private static void LoadDictionary(string fileName)
+{
+    try
+    {
+        if (!File.Exists(fileName))
+        {
+            Console.WriteLine($"The file \"{fileName}\" does not exist.");
+            return;
+        }
 
-                // Main function
-                void Main(string[] args)
+        using (StreamReader sr = new StreamReader(fileName))
+        {
+            dictionary = new List<SweEngGloss>();
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                SweEngGloss gloss = new SweEngGloss(line);
+                dictionary.Add(gloss);
+            }
+        }
+
+        Console.WriteLine($"Dictionary loaded successfully from \"{fileName}\".");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error loading dictionary from file \"{fileName}\": {ex.Message}");
+    }
+}
+
+
+// Main function
+void Main(string[] args)
                 {
                     // ...
 
