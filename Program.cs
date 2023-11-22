@@ -101,8 +101,8 @@
                         Console.Write("Write word in English: ");
                         string e = Console.ReadLine();
                         int index = -1;
-                        for (int index = 0; index < dictionary.Count; index++)
-                        {
+                        for (int index = 0; index < dictionary.Count; index++) // gör koden mer läsbar
+                            {
                             SweEngGloss gloss = dictionary[index];
                             if (gloss.word_swe == s && gloss.word_eng == e)
                                 index = index;
