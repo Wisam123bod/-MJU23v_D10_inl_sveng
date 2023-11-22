@@ -30,36 +30,40 @@
                     Console.WriteLine("Goodbye!");
                 }
                 else if (command == "load")
+                    // Load dictionary
+                    void LoadDictionary(string fileName)
+                    {
+                        using (StreamReader sr = new StreamReader(fileName))
+                        {
+                            dictionary = new List<SweEngGloss>();
+                            string line = sr.ReadLine();
+                            while (line != null)
+                            {
+                                SweEngGloss gloss = new SweEngGloss(line);
+                                dictionary.Add(gloss);
+                                line = sr.ReadLine();
+                            }
+                        }
+                    }
+
+                // Main function
+                void Main(string[] args)
                 {
-                    if(argument.Length == 2)
+                    // ...
+
+                    // Load dictionary
+                    if (argument.Length == 2)
                     {
-                        using (StreamReader sr = new StreamReader(argument[1]))
-                        {
-                            dictionary = new List<SweEngGloss>(); // Empty it!
-                            string line = sr.ReadLine();
-                            while (line != null)
-                            {
-                                SweEngGloss gloss = new SweEngGloss(line);
-                                dictionary.Add(gloss);
-                                line = sr.ReadLine();
-                            }
-                        }
+                        LoadDictionary(argument[1]);
                     }
-                    else if(argument.Length == 1)
+                    else if (argument.Length == 1)
                     {
-                        using (StreamReader sr = new StreamReader(defaultFile))
-                        {
-                            dictionary = new List<SweEngGloss>(); // Empty it!
-                            string line = sr.ReadLine();
-                            while (line != null)
-                            {
-                                SweEngGloss gloss = new SweEngGloss(line);
-                                dictionary.Add(gloss);
-                                line = sr.ReadLine();
-                            }
-                        }
+                        LoadDictionary(defaultFile);
                     }
+
+                    // ...
                 }
+
                 else if (command == "list")
                 {
                     foreach(SweEngGloss gloss in dictionary)
