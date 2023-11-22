@@ -19,7 +19,14 @@ namespace MJU23v_D10_inl_sveng
             }
         }
         static void Main(string[] args)
+            // La till en kontroll för att se argument.Lenght är minst 1
         {
+            if (args.Length < 1)
+            {
+                Console.WriteLine("Not enough arguments. Please provide a command.");
+                return;
+            }
+
             string defaultFile = "..\\..\\..\\dict\\sweeng.lis";
             Console.WriteLine("Welcome to the dictionary app!");
             do
