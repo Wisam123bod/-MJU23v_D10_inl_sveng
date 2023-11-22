@@ -84,6 +84,17 @@ namespace MJU23v_D10_inl_sveng
                         Console.WriteLine($"{gloss.word_swe,-10}  - {gloss.word_eng,-10}");
                     }
                 }
+                else
+                {
+                    Console.WriteLine($"Ordet \"{s}\" finns inte i ordboken.");
+                }
+            }
+    }
+    }
+catch (FileNotFoundException e)
+{
+    Console.WriteLine($"Filen \"{argument[1]}\" finns inte.");
+}
                 else if (command == "new")
                 {
                     if (argument.Length == 3)
