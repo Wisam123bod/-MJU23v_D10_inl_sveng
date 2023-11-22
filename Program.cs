@@ -111,15 +111,14 @@
                     }
                 }
                 else if (command == "translate")
+                    //Koddubbletterna togs bort och för att få bort dubbletterna så kombinera jag båda till en
                 {
-                    if (argument.Length == 2)
+                    if (argument.Length == 2 || argument.Length == 1)
                     {
-                        foreach(SweEngGloss gloss in dictionary)
+                        foreach (SweEngGloss gloss in dictionary)
                         {
-                            if (gloss.word_swe == argument[1])
-                                Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
-                            if (gloss.word_eng == argument[1])
-                                Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
+                            if (gloss.word_swe == argument[0] || gloss.word_eng == argument[0])
+                                Console.WriteLine($"{gloss.word_swe,-10} - {gloss.word_eng,-10}");
                         }
                     }
                     else if (argument.Length == 1)
