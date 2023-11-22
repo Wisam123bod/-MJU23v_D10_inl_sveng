@@ -49,6 +49,18 @@ namespace MJU23v_D10_inl_sveng
                 {
                     Console.WriteLine("Goodbye!");
                     break;
+            //La till en kontroll för att se filen om den finns inna vi öppnar den
+            if (argument.Length == 2)
+{
+    if (!File.Exists(argument[1]))
+    {
+        Console.WriteLine($"The file \"{argument[1]}\" does not exist.");
+        continue;
+    }
+
+    LoadDictionary(argument[1]);
+}
+
                 }
                 // Fixade "fix me"-kommentaren i LoadDictionary()-funktionen
                 if (File.Exists(argument[1]))
