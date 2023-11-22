@@ -35,7 +35,15 @@ namespace MJU23v_D10_inl_sveng
                 Console.Write("> ");
                 string[] argument = Console.ReadLine().Split();
                 string command = argument[0]
-
+             //La till en kontroll för att se till att kommandot är ett av de giltliga alternativen
+                if (!command.Equals("quit", StringComparison.OrdinalIgnoreCase) &&
+             !command.Equals("load", StringComparison.OrdinalIgnoreCase) &&
+             !command.Equals("list", StringComparison.OrdinalIgnoreCase) &&
+             !command.Equals("new", StringComparison.OrdinalIgnoreCase) &&
+             !command.Equals("delete", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine(< span class="math-inline">"Unknown command\: \{command\}"\);
+         continue;
 
                 if (command == "quit")
                 {
